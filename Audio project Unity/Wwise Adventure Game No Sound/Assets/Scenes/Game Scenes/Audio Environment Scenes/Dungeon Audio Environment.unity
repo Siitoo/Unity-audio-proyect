@@ -9697,7 +9697,7 @@ AudioReverbZone:
   m_GameObject: {fileID: 1729662277}
   m_Enabled: 1
   m_MinDistance: 0.32
-  m_MaxDistance: 28.821426
+  m_MaxDistance: 30
   m_ReverbPreset: 13
   m_Room: -1000
   m_RoomHF: -300
