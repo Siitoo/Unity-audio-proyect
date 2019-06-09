@@ -27,6 +27,8 @@ public class Weapon : MonoBehaviour, IInteractable
     public bool equipped = false;
     public bool playerWeapon = false;
 
+    private int hitmaterial = 0;
+
     [Header("Weapon Objects")]
     public GameObject prefab;
     public Collider hitbox;
@@ -83,6 +85,7 @@ public class Weapon : MonoBehaviour, IInteractable
                     if (PickupEventOnPickup)
                     {
                         PlayerManager.Instance.StartPickupEvent();
+
                     }
                     PlayerManager.Instance.pickedUpWeapons.Add(weaponType);
                     PlayerManager.Instance.pickedUpWeaponObjects.Add(gameObject);
@@ -183,8 +186,8 @@ public class Weapon : MonoBehaviour, IInteractable
                 {
                     // HINT: Get material of the contact point
                     SoundMaterial sm = col.gameObject.GetComponent<SoundMaterial>();
+                    hitmaterial = sm.material;
                     if (sm != null) {
-
                         uint thisSwitch = 0;
                         //print("Current Switch: "+ thisSwitch +", New: "+ sm.material.ID);
 
@@ -232,8 +235,10 @@ public class Weapon : MonoBehaviour, IInteractable
     void SetAndPlayWeaponImpact(GameObject HitObj){
         //print("Impact");
         alreadyHitObjects.Add(HitObj);
-        // HINT: Play weapon impact event here, weapon type = transform.parent.gameObject
+        AdventuressAnimationEventHandler test = PlayerManager.Instance.player.GetComponent<AdventuressAnimationEventHandler>();
 
+        test.WeaponSound(hitmaterial);
+        // HINT: Play weapon impact event here, weapon type = transform.parent.gameObject
     }
 
 }

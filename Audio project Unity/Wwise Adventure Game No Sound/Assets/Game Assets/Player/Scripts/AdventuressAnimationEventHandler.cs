@@ -12,6 +12,14 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
     public AudioClip leftFootStep;
     public AudioClip rightFootStep;
 
+    [Header("Weapon Sounds")]
+    public AudioClip[] daggersounds;
+    public AudioClip[] swordsounds;
+    public AudioClip[] hammersounds;
+    public AudioClip[] pickaxesounds;
+    public AudioClip[] axesounds;
+
+
     [Header("Object Links")]
     [SerializeField]
     private Animator playerAnimator;
@@ -84,7 +92,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                 if (side == FootSide.left )
                 {
                     //if (foot_L.FootstepSound.Validate())
-                    { 
+                    {
                         // HINT: Play left footstep sound
                         particlePosition = foot_L.transform.position;
                         FootstepParticles(particlePosition);
@@ -96,7 +104,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                 {
                     //if (foot_R.FootstepSound.Validate())
                     {
-                        // HINT: Play right footstep sound
+                        // HINT: Play right footstep sound                      
                         particlePosition = foot_R.transform.position;
                         FootstepParticles(particlePosition);
                         AudioSource audioSource = GetComponent<AudioSource>();
@@ -183,9 +191,36 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
         // HINT: This is a good place to play the Get item sound and stinger
     }
 
-    public void WeaponSound()
+    public void WeaponSound(int material)
     {
         Weapon EquippedWeapon = PlayerManager.Instance.equippedWeaponInfo;
+        AudioSource audioSource = GetComponent<AudioSource>();
+
+        if (EquippedWeapon.weaponType == WeaponTypes.Dagger)
+        {
+            if (daggersounds[material] != null)
+                audioSource.PlayOneShot(daggersounds[material], 0.7F);
+        }
+        if (EquippedWeapon.weaponType == WeaponTypes.Sword)
+        {
+            if (swordsounds[material] != null)
+                audioSource.PlayOneShot(swordsounds[material], 0.7F);
+        }
+        if (EquippedWeapon.weaponType == WeaponTypes.Axe)
+        {
+            if (axesounds[material] != null)
+                audioSource.PlayOneShot(axesounds[material], 0.7F);
+        }
+        if (EquippedWeapon.weaponType == WeaponTypes.Hammer)
+        {
+            if (hammersounds[material] != null)
+                audioSource.PlayOneShot(hammersounds[material], 0.7F);
+        }
+        if (EquippedWeapon.weaponType == WeaponTypes.PickAxe)
+        {
+            if (pickaxesounds[material] != null)
+                audioSource.PlayOneShot(pickaxesounds[material], 0.7F);
+        }
         // HINT: This is a good place to play equipped weapon impact sound
     }
 }
