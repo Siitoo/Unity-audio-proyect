@@ -837,25 +837,10 @@ MonoBehaviour:
     type: 2}
   Debugging:
     RaycastVisionRange: 1
-  HurtSound:
-    valueGuid: a1b98b988e2f934989335b2a87d9869c
-    ID: 3990952
-  DeathSound:
-    valueGuid: 08cb1a3641cf114caa873ca4142aac7e
-    ID: 1258303199
   isAlive: 1
   startPosition: {x: 0, y: 0, z: 0}
   daytime: 0
   AttackType: 7
-  MoveSound:
-    valueGuid: 1c08e1373e62d2428f8713ada174f864
-    ID: 2135810184
-  AttackSound:
-    valueGuid: 9a251ec149ff7143a0c5cd222b9b7610
-    ID: -673373529
-  ExplodeSound:
-    valueGuid: c3cacda4ea7f1b45854afd603ccbd040
-    ID: -714784734
   steerSpeed: 0
   slowDown: 15
   Eye: {fileID: 1000013566666502}
@@ -886,32 +871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bbb0657c59a4f78a7d975cb1e30519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponImpact:
-    valueGuid: 00000000000000000000000000000000
-    ID: 0
-  WeaponTypeSwitch:
-    valueGuid: 00000000000000000000000000000000
-    ID: 0
-    groupGuid: 00000000000000000000000000000000
-    groupID: 0
-  ComboEvent:
-    valueGuid: 00000000000000000000000000000000
-    ID: 0
-  WeaponCombo1:
-    valueGuid: 00000000000000000000000000000000
-    ID: 0
-    groupGuid: 00000000000000000000000000000000
-    groupID: 0
-  WeaponCombo2:
-    valueGuid: 00000000000000000000000000000000
-    ID: 0
-    groupGuid: 00000000000000000000000000000000
-    groupID: 0
-  WeaponCombo3:
-    valueGuid: 00000000000000000000000000000000
-    ID: 0
-    groupGuid: 00000000000000000000000000000000
-    groupID: 0
   weaponType: 1
   weaponAnimationType: 0
   equipped: 0
@@ -965,11 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d194b927782944d2ca81f0d00674450b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material:
-    valueGuid: 80ac7a017110da448a92a20028e78932
-    ID: 1647104456
-    groupGuid: c8ce850565410c458f907f1fc8884a30
-    groupID: -230521123
+  material: 6
 --- !u!114 &114346673180717022
 MonoBehaviour:
   m_ObjectHideFlags: 1

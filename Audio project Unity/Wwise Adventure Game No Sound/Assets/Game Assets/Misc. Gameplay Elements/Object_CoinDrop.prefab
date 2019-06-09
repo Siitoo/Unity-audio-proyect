@@ -335,6 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26163587209d04506b210d53084fdaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinpicksound:
+  - {fileID: 8300000, guid: 5e8f1ad0b9cd88c41bcea54714c3f7cf, type: 3}
+  - {fileID: 8300000, guid: 1a64e981761e2814e807cbb3c1272dcf, type: 3}
+  - {fileID: 8300000, guid: 26402fb75d75b69498137c8d957a0bb4, type: 3}
+  - {fileID: 8300000, guid: f9fc383d3c5f4f34aba1efa8e49a9223, type: 3}
   playSpawnSoundAtSpawn: 1
 --- !u!135 &135047177977607910
 SphereCollider:
