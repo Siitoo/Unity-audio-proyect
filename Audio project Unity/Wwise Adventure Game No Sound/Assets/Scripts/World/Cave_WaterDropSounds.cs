@@ -50,6 +50,9 @@ public class Cave_WaterDropSounds : MonoBehaviour
                     drops.Add(drop);
 
                     // HINT: A water drop has fallen, you might want to place some code here to play its sound effect
+                    drop.gameObject.GetComponent<AudioSource>().Play();
+
+
                     Destroy(drop, 1.5f);
                 }
             }
