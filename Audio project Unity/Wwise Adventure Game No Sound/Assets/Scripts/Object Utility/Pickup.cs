@@ -22,7 +22,9 @@ public class Pickup : MonoBehaviour, IInteractable
 	public bool addedToInteractManager = false;
 	public bool InteractionEnabled = true;
 
-	public bool interactionSound = true;
+    public int pickuptype = 0;
+
+    public bool interactionSound = true;
 	[HideInInspector]
 	public SphereCollider trigger;
 
@@ -186,8 +188,8 @@ public class Pickup : MonoBehaviour, IInteractable
 
 			if (interactionSound)
 			{
-                
-			}
+                PlayerManager.Instance.player.GetComponent<AdventuressAnimationEventHandler>().PickUpItem(pickuptype);           
+            }
 			if (pickupParticles != null)
 			{
 				GameObject p = Instantiate(pickupParticles, transform.position, Quaternion.identity) as GameObject;

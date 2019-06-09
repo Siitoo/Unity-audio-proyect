@@ -12,6 +12,9 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
     public AudioClip leftFootStep;
     public AudioClip rightFootStep;
 
+    [Header("Pickup Sounds")]
+    public AudioClip[] pickupsounds;
+
     [Header("Weapon Sounds")]
     public AudioClip[] daggersounds;
     public AudioClip[] swordsounds;
@@ -31,6 +34,8 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
 
     private PlayerFoot foot_L;
     private PlayerFoot foot_R;
+
+    AudioSource audioSource;
 
     #region private variables
     private bool hasPausedMovement;
@@ -57,6 +62,8 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
         {
             print("Right foot missing");
         }
+        audioSource = GetComponent<AudioSource>();
+
     }
 
 
@@ -98,7 +105,6 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                         // HINT: Play left footstep sound
                         particlePosition = foot_L.transform.position;
                         FootstepParticles(particlePosition);
-                        AudioSource audioSource = GetComponent<AudioSource>();
                         audioSource.PlayOneShot(leftFootStep, 0.7F);
                     }
                 }
@@ -109,7 +115,6 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                         // HINT: Play right footstep sound                      
                         particlePosition = foot_R.transform.position;
                         FootstepParticles(particlePosition);
-                        AudioSource audioSource = GetComponent<AudioSource>();
                         audioSource.PlayOneShot(rightFootStep, 0.7F);
                     }
                 }
@@ -154,8 +159,6 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
         Weapon W = PlayerManager.Instance.equippedWeaponInfo;
         // HINT: PlayerManager.Instance.weaponSlot contains the selected weapon;
         // HINT: This is a good place to play the weapon swing sounds
-        AudioSource audioSource = GetComponent<AudioSource>();
-
 
         AnimatorStateInfo currentAnimation = PlayerManager.Instance.playerAnimator.GetCurrentAnimatorStateInfo(0);
         if (currentAnimation.IsName("Player_RightSwing"))
@@ -204,16 +207,15 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
         PlayerManager.Instance.ResumeMovement(gameObject);
     }
 
-    public void PickUpItem()
+    public void PickUpItem(int itemtype)
     {
         PlayerManager.Instance.PickUpEvent();
-        // HINT: This is a good place to play the Get item sound and stinger
+        audioSource.PlayOneShot(pickaxesounds[itemtype]);
     }
 
     public void WeaponSound(int material)
     {
         Weapon EquippedWeapon = PlayerManager.Instance.equippedWeaponInfo;
-        AudioSource audioSource = GetComponent<AudioSource>();
 
         if (EquippedWeapon.weaponType == WeaponTypes.Dagger)
         {
