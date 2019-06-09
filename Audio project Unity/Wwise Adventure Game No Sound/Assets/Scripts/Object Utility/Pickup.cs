@@ -186,7 +186,7 @@ public class Pickup : MonoBehaviour, IInteractable
 
 			if (interactionSound)
 			{
-				// HINT: Play the sound for this pickup
+                
 			}
 			if (pickupParticles != null)
 			{

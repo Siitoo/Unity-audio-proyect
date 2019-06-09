@@ -169,7 +169,7 @@ public class Weapon : MonoBehaviour, IInteractable
                 if (currentAnimation.IsName("Player_RightSwing"))
                 {
                     attack.swingType = SwingTypes.Right;
-                    // HINT: Weapon combo state 1, you may want to take this into account when playing the weapon swing sound
+                    // HINT: Weapon combo state 1,you may want to take this into account when playing the weapon swing sound
                 }
                 else if (currentAnimation.IsName("Player_LeftSwing"))
                 {
@@ -178,7 +178,7 @@ public class Weapon : MonoBehaviour, IInteractable
                 }
                 else if (currentAnimation.IsName("Player_TopSwing"))
                 {
-                    attack.swingType = SwingTypes.Top;
+                    attack.swingType = SwingTypes.Top;                   
                     // HINT: Weapon combo state 3, you may want to take this into account when playing the weapon swing sound
                 }
 
@@ -235,9 +235,9 @@ public class Weapon : MonoBehaviour, IInteractable
     void SetAndPlayWeaponImpact(GameObject HitObj){
         //print("Impact");
         alreadyHitObjects.Add(HitObj);
-        AdventuressAnimationEventHandler test = PlayerManager.Instance.player.GetComponent<AdventuressAnimationEventHandler>();
+        AdventuressAnimationEventHandler weaponsound = PlayerManager.Instance.player.GetComponent<AdventuressAnimationEventHandler>();
 
-        test.WeaponSound(hitmaterial);
+        weaponsound.WeaponSound(hitmaterial);
         // HINT: Play weapon impact event here, weapon type = transform.parent.gameObject
     }
 

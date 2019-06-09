@@ -18,7 +18,9 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
     public AudioClip[] hammersounds;
     public AudioClip[] pickaxesounds;
     public AudioClip[] axesounds;
-
+    public AudioClip[] firstattack;
+    public AudioClip[] secondattack;
+    public AudioClip[] thirdattack;
 
     [Header("Object Links")]
     [SerializeField]
@@ -149,10 +151,27 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
 
     public void Weapon_SwingEvent()
     {
-        // PLAY SOUND
         Weapon W = PlayerManager.Instance.equippedWeaponInfo;
         // HINT: PlayerManager.Instance.weaponSlot contains the selected weapon;
         // HINT: This is a good place to play the weapon swing sounds
+        AudioSource audioSource = GetComponent<AudioSource>();
+
+
+        AnimatorStateInfo currentAnimation = PlayerManager.Instance.playerAnimator.GetCurrentAnimatorStateInfo(0);
+        if (currentAnimation.IsName("Player_RightSwing"))
+        {
+            audioSource.PlayOneShot(firstattack[Random.Range(0, 3)], 0.75f);
+        }
+        else if (currentAnimation.IsName("Player_LeftSwing"))
+        {
+            audioSource.PlayOneShot(secondattack[Random.Range(0, 3)], 0.75f);
+        }
+        else if (currentAnimation.IsName("Player_TopSwing"))
+        {
+            audioSource.PlayOneShot(thirdattack[Random.Range(0, 3)], 0.75f);
+
+        }
+
     }
 
     public void PauseMovement()

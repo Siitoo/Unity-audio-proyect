@@ -16,5 +16,6 @@ public class SoundMaterial : MonoBehaviour
     // grass = 3
     // crate = 4
     // barrel = 5
+    // leaves = 6
     public int material;
 }
