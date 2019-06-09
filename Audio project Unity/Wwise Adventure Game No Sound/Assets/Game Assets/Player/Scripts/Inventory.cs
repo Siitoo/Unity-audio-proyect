@@ -55,6 +55,14 @@ public class Inventory : MonoBehaviour
 
     public static bool InventoryIsOut = false;
 
+    #region audios
+    public AudioClip open_inventory_audio;
+    public AudioClip close_inventory_audio;
+    public AudioClip select_item_audio;
+
+    private AudioSource audiosource;
+    #endregion
+
     #region private variables
     private bool hasShown = false;
     private int SelectIncrementor_Row1 = 0;
@@ -113,6 +121,9 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < 3; i++) { CanPressLefts.Add(false); }
         for (int i = 0; i < 3; i++) { CanPressRights.Add(false); }
+
+        audiosource = PlayerManager.Instance.player.GetComponent<AudioSource>();
+
     }
 
     void MoveInventoryObjects(List<GameObject> Positions, List<GameObject> invRef, int incre, List<GameObject> StoreSpawns)
@@ -706,7 +717,7 @@ public class Inventory : MonoBehaviour
         if (!Menu.isOpen && DialogueManager.Instance.Dialogue.Count < 1 && !InventoryIsOut)
         {
             canvasGroup.interactable = true;
-            // HINT: You might want to play the inventory opened sound here
+            audiosource.PlayOneShot(open_inventory_audio);
             InventoryIsOut = true;
             if (EventSystem.current != null)
             {
@@ -728,7 +739,7 @@ public class Inventory : MonoBehaviour
         if (InventoryIsOut)
         {
             canvasGroup.interactable = false;
-            // HINT: You might want to play the inventory closed sound here
+            audiosource.PlayOneShot(close_inventory_audio);
             InventoryIsOut = false;
             GameManager.Instance.gameSpeedHandler.UnPauseGameSpeed(gameObject.GetInstanceID());
 
@@ -784,7 +795,7 @@ public class Inventory : MonoBehaviour
 
     public void ButtonIncrement(int layer)
     {
-        // HINT: You may want to play the inventory select sound here
+        audiosource.PlayOneShot(select_item_audio);
 
         if (Panel.activeInHierarchy && hasShown)
         {
@@ -808,7 +819,7 @@ public class Inventory : MonoBehaviour
 
     public void InversedIncrement(int layer)
     {
-        // HINT: You may want to play the inventory select sound here
+        audiosource.PlayOneShot(select_item_audio);
         if (Panel.activeInHierarchy && hasShown)
         {
             if (layer == 0)

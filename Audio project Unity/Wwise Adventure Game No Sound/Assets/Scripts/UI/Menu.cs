@@ -22,6 +22,12 @@ public class Menu : MonoBehaviour
 
     public MenuEvent OnMenuDown;
 
+    #region audio
+    public AudioClip open_menu_audio;
+    public AudioClip close_menu_audio;
+    private AudioSource audiosource;
+    #endregion
+
     private bool menuOpen = false;
 
     public void Update()
@@ -29,6 +35,11 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P) && GetMouseWithP) {
             PlayerManager.Instance.cameraScript.FreezeAndShowCursor(true, gameObject);
         }
+    }
+
+    public void Start()
+    {
+        audiosource = PlayerManager.Instance.player.GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -49,7 +60,7 @@ public class Menu : MonoBehaviour
             isOpen = menuOpen;
             if (menuOpen)
             {
-                // HINT: Play menu open sound here
+                audiosource.PlayOneShot(open_menu_audio);
                 GameManager.Instance.gameSpeedHandler.PauseGameSpeed(gameObject.GetInstanceID());
                 GameManager.Instance.BlurCam();
 
@@ -61,7 +72,7 @@ public class Menu : MonoBehaviour
             }
             else
             {
-                // HINT: Play menu close sound here
+                audiosource.PlayOneShot(close_menu_audio);
                 GameManager.Instance.gameSpeedHandler.UnPauseGameSpeed(gameObject.GetInstanceID());
                 GameManager.Instance.UnBlurCam();
                 QuestBox.DisableObject(0.25f);

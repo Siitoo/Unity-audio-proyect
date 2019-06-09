@@ -96,6 +96,5 @@ public class QuestManager : Singleton<QuestManager>
     {
         float percentage = ((float)mainQuestProgress / (float)AmountOfQuests) * 100f;
         QuestProgressRTPC = percentage;
-        // HINT: Progress RPTC changed, do you need to update anything here?
     }
 }
